@@ -133,6 +133,8 @@ function App() {
             title="Video Introduction"
             description="A quick introduction to my journey across full-stack engineering, cloud-native architecture, and AI-powered product development."
           />
+
+          
           <div className="video-wrapper">
             <iframe width="560" height="315" src="https://www.youtube.com/embed/YowK53KH6Ic?si=V6Rt3sG8MsYha2mk&amp;start=9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
             </iframe>
