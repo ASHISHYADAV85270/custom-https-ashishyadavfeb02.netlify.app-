@@ -19,6 +19,7 @@ import { BiLogoMongodb, BiLogoPostgresql, BiLogoTypescript } from 'react-icons/b
 import { SiExpress, SiNextdotjs, SiRedis, SiTailwindcss } from 'react-icons/si'
 import './App.css'
 import { ChatbotWidget } from './components/ChatbotWidget'
+import { env } from './config/env.js'
 import { SectionHeader } from './components/SectionHeader'
 import {
   cvDownload,
@@ -34,7 +35,7 @@ import {
 
 function App() {
   const [activeFilter, setActiveFilter] = useState('All')
-  let isChatbotEnabled = false;
+  const isChatbotEnabled = env.enableChatbot
   const projectFilters = useMemo(
     () => ['All', ...new Set(projects.map((project) => project.tag))],
     [],
@@ -173,7 +174,16 @@ function App() {
 
           
           <div className="video-wrapper">
-            <iframe width="560" height="315" src={import.meta.env.VITE_INTRO_VIDEO_URL || 'https://www.youtube.com/embed/YowK53KH6Ic?si=V6Rt3sG8MsYha2mk&amp;start=9'} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+            <iframe
+              width="560"
+              height="315"
+              src={env.introVideoUrl}
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+            >
             </iframe>
           </div>
         </section>

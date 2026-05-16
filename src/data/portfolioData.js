@@ -87,7 +87,9 @@ function toGoogleDriveDownloadUrl(url) {
   return `https://drive.google.com/uc?export=download&id=${fileId}`
 }
 
-const rawCvUrl = import.meta.env.VITE_CV_URL?.trim() ?? ''
+import { env } from '../config/env.js'
+
+const rawCvUrl = env.cvUrl
 
 export const cvDownload = {
   url: toGoogleDriveDownloadUrl(rawCvUrl),

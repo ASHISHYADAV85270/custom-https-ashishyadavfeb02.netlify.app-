@@ -28,6 +28,27 @@ Frontend runs on Vite default port and chatbot API runs on `http://localhost:878
 - `VITE_ENABLE_CHATBOT=true` to show chatbot
 - `VITE_ENABLE_CHATBOT=false` to hide chatbot
 
+## Deploy on Netlify
+
+`.env` is not uploaded to Git (it is gitignored). Netlify only sees variables you add in the dashboard.
+
+1. In Netlify: **Site configuration → Environment variables**
+2. Add each variable from `.env.example` that starts with `VITE_` (names must match exactly).
+3. **Deploy → Trigger deploy** (or push a commit). Vite bakes env vars in at **build time**, so changing variables requires a new deploy.
+
+| Variable | Example |
+|----------|---------|
+| `VITE_CV_URL` | Google Drive share link |
+| `VITE_INTRO_VIDEO_URL` | YouTube embed URL |
+| `VITE_ENABLE_CHATBOT` | `false` |
+| `VITE_CHAT_API_URL` | Leave empty unless you host the chat API |
+
+**Common mistakes**
+
+- Using `INTRO_VIDEO_URL` without the `VITE_` prefix (Vite will ignore it).
+- Expecting `OPENAI_API_KEY` to work on static hosting — the Express server in `server/` does not run on Netlify unless you add Netlify Functions separately.
+- Forgetting to redeploy after adding or changing variables.
+
 ## Scripts
 
 - `npm run dev` - run both web and API

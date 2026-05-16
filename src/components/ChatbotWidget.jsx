@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
+import { env } from '../config/env.js'
 
 const getApiEndpoint = (path) => {
-  const base = import.meta.env.VITE_CHAT_API_URL
+  const base = env.chatApiUrl
   if (!base) {
     return path
   }
