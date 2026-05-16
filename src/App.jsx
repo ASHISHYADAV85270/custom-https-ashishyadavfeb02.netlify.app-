@@ -32,8 +32,7 @@ import {
 
 function App() {
   const [activeFilter, setActiveFilter] = useState('All')
-  const isChatbotEnabled = import.meta.env.VITE_ENABLE_CHATBOT || false;
-
+  let isChatbotEnabled = false;
   const projectFilters = useMemo(
     () => ['All', ...new Set(projects.map((project) => project.tag))],
     [],
