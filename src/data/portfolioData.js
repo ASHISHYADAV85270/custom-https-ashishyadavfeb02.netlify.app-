@@ -47,10 +47,28 @@ export const impactStats = [
   { value: '95%', label: 'Component testing coverage achieved in scalable UI systems' },
 ]
 
+const contactEmail = 'ashishyadavfeb02@gmail.com'
+
+const mailSubject = 'Company Name'
+const mailBody = `Hi Ashish,
+
+I visited your portfolio and would like to get in touch.
+
+`
+
+const gmailComposeParams = new URLSearchParams({
+  view: 'cm',
+  fs: '1',
+  to: contactEmail,
+  su: mailSubject,
+  body: mailBody,
+})
+
 export const profileLinks = {
   github: 'https://github.com/ASHISHYADAV85270',
   linkedin: 'https://www.linkedin.com/in/ashish852/',
-  email: 'mailto:ashishyadavfeb02@gmail.com',
+  emailAddress: contactEmail,
+  email: `https://mail.google.com/mail/?${gmailComposeParams.toString()}`,
   phone: 'tel:+918527086883',
 }
 

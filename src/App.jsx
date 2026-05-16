@@ -89,17 +89,29 @@ function App() {
               <a href="#experience">Experience</a>
               <a href="#design-system">Design System</a>
             </div>
-            {cvDownload.url ? (
+            <div className="nav-cta-group">
               <a
-                className="nav-cv-btn"
-                href={cvDownload.url}
+                className="nav-mail-btn"
+                href={profileLinks.email}
                 target="_blank"
                 rel="noreferrer"
+                aria-label={`Email ${profileLinks.emailAddress} via Gmail`}
               >
-                <FaDownload aria-hidden="true" />
-                Download CV
+                <FaEnvelope aria-hidden="true" />
+                Email Me
               </a>
-            ) : null}
+              {cvDownload.url ? (
+                <a
+                  className="nav-cv-btn"
+                  href={cvDownload.url}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <FaDownload aria-hidden="true" />
+                  Download CV
+                </a>
+              ) : null}
+            </div>
           </div>
         </nav>
         <div className="hero-layout">
@@ -330,9 +342,14 @@ function App() {
             thoughtful design and scalable engineering.
           </p>
           <div className="contact-links">
-            <a href={profileLinks.email}>
+            <a
+              href={profileLinks.email}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={`Email ${profileLinks.emailAddress} via Gmail`}
+            >
               <FaEnvelope aria-hidden="true" />
-              ashishyadavfeb02@gmail.com
+              {profileLinks.emailAddress}
             </a>
             <a href={profileLinks.phone}>
               <FaMobileAlt aria-hidden="true" />
