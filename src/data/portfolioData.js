@@ -54,6 +54,28 @@ export const profileLinks = {
   phone: 'tel:+918527086883',
 }
 
+function toGoogleDriveDownloadUrl(url) {
+  if (!url || !url.includes('drive.google.com')) {
+    return url
+  }
+
+  const fileId =
+    url.match(/\/d\/([^/]+)/)?.[1] ?? url.match(/[?&]id=([^&]+)/)?.[1]
+
+  if (!fileId) {
+    return url
+  }
+
+  return `https://drive.google.com/uc?export=download&id=${fileId}`
+}
+
+const rawCvUrl = import.meta.env.VITE_CV_URL?.trim() ?? ''
+
+export const cvDownload = {
+  url: toGoogleDriveDownloadUrl(rawCvUrl),
+  label: 'Download CV',
+}
+
 export const profileImage = '/images/ashish-profile.png'
 
 export const projects = [

@@ -5,6 +5,7 @@ import {
   FaCss3Alt,
   FaDatabase,
   FaDocker,
+  FaDownload,
   FaEnvelope,
   FaGithub,
   FaHtml5,
@@ -20,6 +21,7 @@ import './App.css'
 import { ChatbotWidget } from './components/ChatbotWidget'
 import { SectionHeader } from './components/SectionHeader'
 import {
+  cvDownload,
   designSystemHighlights,
   experiences,
   impactStats,
@@ -79,12 +81,25 @@ function App() {
       <header className="hero-section">
         <nav className="top-nav">
           <p className="brand">Ashish Yadav</p>
-          <div className="nav-links">
-            <a href="#about-video">About</a>
-            <a href="#skills">Skills</a>
-            <a href="#projects">Projects</a>
-            <a href="#experience">Experience</a>
-            <a href="#design-system">Design System</a>
+          <div className="top-nav-actions">
+            <div className="nav-links">
+              <a href="#about-video">About</a>
+              <a href="#skills">Skills</a>
+              <a href="#projects">Projects</a>
+              <a href="#experience">Experience</a>
+              <a href="#design-system">Design System</a>
+            </div>
+            {cvDownload.url ? (
+              <a
+                className="nav-cv-btn"
+                href={cvDownload.url}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <FaDownload aria-hidden="true" />
+                Download CV
+              </a>
+            ) : null}
           </div>
         </nav>
         <div className="hero-layout">
@@ -103,6 +118,17 @@ function App() {
               <a className="btn btn-secondary" href="#contact">
                 Let&apos;s Collaborate
               </a>
+              {cvDownload.url ? (
+                <a
+                  className="btn btn-secondary btn-download"
+                  href={cvDownload.url}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <FaDownload aria-hidden="true" />
+                  {cvDownload.label}
+                </a>
+              ) : null}
             </div>
 
             <div className="impact-grid">
@@ -320,6 +346,12 @@ function App() {
               <FaLinkedin aria-hidden="true" />
               LinkedIn
             </a>
+            {cvDownload.url ? (
+              <a href={cvDownload.url} target="_blank" rel="noreferrer">
+                <FaDownload aria-hidden="true" />
+                {cvDownload.label}
+              </a>
+            ) : null}
           </div>
         </div>
       </footer>
