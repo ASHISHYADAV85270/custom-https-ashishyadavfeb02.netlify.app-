@@ -32,7 +32,7 @@ import {
 
 function App() {
   const [activeFilter, setActiveFilter] = useState('All')
-  const isChatbotEnabled = import.meta.env.VITE_ENABLE_CHATBOT !== 'false'
+  const isChatbotEnabled = import.meta.env.VITE_ENABLE_CHATBOT || false;
 
   const projectFilters = useMemo(
     () => ['All', ...new Set(projects.map((project) => project.tag))],
@@ -136,12 +136,9 @@ function App() {
 
           
           <div className="video-wrapper">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/YowK53KH6Ic?si=V6Rt3sG8MsYha2mk&amp;start=9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+            <iframe width="560" height="315" src={import.meta.env.VITE_INTRO_VIDEO_URL || 'https://www.youtube.com/embed/YowK53KH6Ic?si=V6Rt3sG8MsYha2mk&amp;start=9'} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
             </iframe>
           </div>
-          <p className="video-note">
-            Replace this embed URL with your personal intro video whenever ready.
-          </p>
         </section>
 
         <section id="skills" className="section">
